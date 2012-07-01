@@ -4,9 +4,18 @@ class Context_Playground_Search {
 
 	private $playgrounds;
 
-	public function __construct()
+	// $page and $page_offset used for paging ( duh )
+	// $order_by is an array of 'field' and 'direction'
+	public function __construct($page = 0, $page_size = 50,$order_by = array())
 	{
 		$this->playgrounds = ORM::Factory('playground');
+		$this->playgrounds = $this->playgrounds->limit($page_size)->offset($page*$page_size);
+		if( $order_by AND
+			isset($order_by['field']) AND 
+			isset($order_by['direction']) )
+		{
+			$this->playgrounds = $this->playgrounds->order_by($order_by['field'],$order_by['direction']);
+		}
 	}
 
 	public function by_id($id = FALSE)
@@ -63,7 +72,7 @@ class Context_Playground_Search {
 			where('latitude','>=',$latitude_minimum)->
 			where('latitude','<=',$latitude_maximum)->
 			where('longitude','>=',$longitude_minimum)->
-			where('longitude','>=',$longitude_maximum)->
+			where('longitude','<=',$longitude_maximum)->
 			find_all();
 
 		$playgrounds_array_data = array();
@@ -84,6 +93,11 @@ class Context_Playground_Search {
 			'success' => TRUE,
 			'playgrounds' => $playgrounds_array_data
 		);
+	}
+
+	public function all()
+	{
+		// $playgrounds = $this->playgrounds->
 	}
 
 }
