@@ -13,7 +13,7 @@ class Playground_Playground_Search_Id extends Playground_Playground_Search {
 	{
 		try
 		{
-			$this->playgrounds = $this->playgrounds->where('id','=',$this->id);
+			$this->_playgrounds = $this->_playgrounds->where('id','=',$this->id);
 			
 			$playground_results = $this->_find_results();
 

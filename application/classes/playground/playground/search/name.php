@@ -13,7 +13,7 @@ class Playground_Playground_Search_Name extends Playground_Playground_Search {
 	{
 		try
 		{
-			$this->playgrounds = $this->playgrounds->where('name','LIKE','%'.$this->name.'%');
+			$this->_playgrounds = $this->_playgrounds->where('name','LIKE','%'.$this->name.'%');
 			
 			$playground_results = $this->_find_results();
 
