@@ -82,4 +82,16 @@ class Playground_Playground extends Playground {
 		}
 	}
 
+	/**
+	 * Loads a playground based on a specific ID.
+	 * @author David  Overcash <david@system76.com>
+	 * @author David  Overcash <funnylookinhat@gmail.com>
+	 * @param  int $id      Playground ID.
+	 * @return Model_Playground          The playground that is loaded.
+	 */
+	protected function _load_playground($id)
+	{
+		return ORM::Factory('playground',$id);
+	}
+
 }
