@@ -1,4 +1,6 @@
 kohana-playground
 =================
 
-More of less a proving ground for me to figure out new methods of class organization.
+Just a simple excercise in changing where your application's business logic is stored.
+
+
